@@ -1,0 +1,91 @@
+@font-face {
+  font-family: proxreg;
+  src: url('/fonts/ProximaNova-Reg.ttf');
+}
+
+@font-face {
+  font-family: proxbold;
+  src: url('/fonts/ProximaNova-Bold.ttf');
+}
+
+@font-face {
+  font-family: proxbold;
+  src: url('/fonts/ProximaNova-Bold.ttf');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+.wrapper, {
+  height: 100%;
+}
+
+body {
+  background-color: #42444E;
+  font-family: proxreg;
+}
+
+.col-a {
+width: 20%;
+background-color: #42444E;
+float: left;
+}
+
+.col-b {
+  background-color: white;
+  float: left;
+  width: 80%;
+}
+
+
+// ===================================
+// NAV STYLE
+// ===================================
+
+.col-a {
+  height: 100%;
+  h1 {
+    font-size: 3em;
+    color:white;
+    border-bottom: 1px solid grey;
+    padding: 30px;
+    margin-bottom: 25px;
+  }
+  nav {
+    margin: 30px;
+    ul li {
+      list-style-type: none;
+      padding: 5px 0;
+      line-height: 1.5;
+      a {
+        text-decoration: none;
+        color: white;
+        margin-left: 20px;
+      }
+    }
+  }
+}
+
+
+nav > ul > li {
+  color: #222;
+  font-size: 1.5em;
+  margin: 10px 0;
+  font-family: proxbold;
+}
+
+
+
+// ===================================
+// CONTENT AREA
+// ===================================
+.col-b {
+  height: 3500px;
+  line-height: 2;
+  p {
+    margin: 1em;
+  }
+}
