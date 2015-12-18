@@ -1,0 +1,157 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <title>my learning app</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css(.) styles/vendor.css -->
+
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="/styles/main.css">
+    <!-- endbuild -->
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="/bower_components/modernizr/modernizr.js"></script>
+    <script src="jquery.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+        <script src="../../../scripts/css-nav.js"></script>
+
+      <div class="col-b">
+        <h1>The 5 ways of laying out pages with CSS</h1>
+        <p>
+          The 5 types of layouts are as follows:
+        </p>
+        <ol>
+          <li><a href="#display-modes">Display Modes</a></li>
+          <li>Floats</li>
+          <li>Positiong Schemes</li>
+          <li>Flexbox</li>
+          <li>Grid Layout</li>
+        </ol>
+
+        <p>Lets cover these in order of our list.</p>
+        <hr>
+        <h2 id="display-modes">1. Display Modes</h2>
+        <p>We can change the default display mode of any element on our page by using the css display property. There are 3 useful display types for css layout purposes. </p>
+
+<pre><code class="language-css">.class-name { display: inline; }
+.class-name { display: inline-block; }
+.class-name { display: table; }
+</code></pre>
+
+        <h3><a>Display Inline</a></h3>
+        <p>The display <code>inline</code> property sets any element to behave exactly as an inline element. Such as a link or the words in a paragraph. </p>
+
+        <p class="highlight"> ** Inline elements cannot have a width or top and bottom margin applied to them. ** </p> <br>
+
+
+        <p>By default, list items display as block level elements. </p>
+        <ol>
+          <li>this</li>
+          <li>is</li>
+          <li>a</li>
+          <li>list</li>
+        </ol>
+
+         <p>But watch but happens when we apply the <code>display:inline;</code> rule. and reset the list style type</p>
+
+        <ul>
+          <li class="inline">This</li>
+          <li class="inline">Is</li>
+          <li class="inline">a</li>
+          <li class="inline">list</li>
+        </ul>
+
+        <p class="highlight"> ** Just as there is white space between the words of a paragraph, there is white spice between elements you set to display as inline.  ** </p>
+
+        <p>To remove the white space you can remove all spacing between elements in your html markup, or the preferred way, which is to apply a negative <code>margin-right</code> of about 4 px. Depending on the font size.</p>
+
+        <pre><code class="language-css">.list {margin-right:-4px; }</code></pre>
+        <p>And we get:</p>
+
+        <ul>
+          <li class="inline remove-inline-spacing">This</li>
+          <li class="inline remove-inline-spacing">Is</li>
+          <li class="inline remove-inline-spacing">a</li>
+          <li class="inline remove-inline-spacing">list</li>
+        </ul>
+
+        <p>One last issue with the display inline method:</p>
+
+        <p class="highlight">** When you resize the browser window, the elements displayed as inline will wrap like words of a paragraph. **</p>
+
+        <img src="../../images/inline-wrapping.png" alt="">
+
+        <p>We can stop that from happening by applying a <code>whitespace</code> property with a value of <code>nowrap</code>.</p>
+
+        <p>This still is not perfect because the elements start to esacpe their parents as seen in the following image.</p>
+
+        <img src="../../images/inline-wrapping-fix.png" alt="">
+
+        <h4>Summary</h4>
+        <p>It's very important to understand how <code>display:inline</code> works, but due to the several layout bugs we've mentioned here, <code>display: inline;</code> will rarely be used for entire page layouts, however, it could be useful in some situations. </p>
+        <p>A similiar but more useful display mode for layout purposes is <code>display:inline-block;</code></p>
+        <hr>
+
+        <h3>Display Inline-block</h3>
+
+        <p>This display mode is very simliar to <code>display:inline;</code> but with a few differences, which allow it to be more flexible, thus providing more usefullness.</p>
+
+        <p class="highlight">** <code>display:inline-block</code> allows you to set a width and top and bottom margins **</p>
+
+        <p>To fix the wrapping of elements that are displayed as <code>inline</code>, you can switch them to <code>inline-block</code> and instead of every element wrapping like words in a paragraph, the <code>inline-block</code> elements stick together and wrap as one down to the next line. </p>
+
+        <img src="../../images/inline-block.png" alt="">
+
+        <p class="highlight">** The same whitespace issue with <code>inline</code> elements also occur with <code>inline-block</code> elements. **</p>
+
+        <p class="highlight">** Display values are not inherited by child elements **</p>
+
+        <p>If we ever need to make a link's hover target expand to fill the entire area of an <code>inline-block</code> element, here is how we do that.</p>
+
+        <p>Here we have a list displayed as <code>inline-block</code> with a few styles added to it. Notice the whitespace.</p>
+
+        <ul>
+          <li class="inline-block"><a href="">Link 1</a></li>
+          <li class="inline-block"><a href="">Link 2</a></li>
+          <li class="inline-block"><a href="">Link 3</a></li>
+          <li class="inline-block"><a href="">Link 4</a></li>
+        </ul>
+
+        <p>When you hover over the links, the hover target area is very small. We want the entire area that is blue to be clickable. For that result, we need to remove the padding from the actual list items, apply it to the links themselves, and turn the anchor tags to block level elements. </p>
+
+<pre><code class="language-css">.inline-block {
+  display: inline-block;
+  background-color: rgb(45, 59, 255);
+  border-radius: 5px;
+  a {
+    color: white;
+    text-decoration: none;
+    font-family: proxreg;
+    display: block;
+    padding: 10px;
+  }
+}</code></pre>
+        <hr>
+        <h3>Display: Table</h3>
+
+        <p class="highlight">** What's most useful about the <code>display:table;</code>
+          property is that it allows us to easily vertically align children to the middle of their parents. ** 
+        </p>
+
+      </div>
+    </div>
+
+
+    <script src="../../../../scripts/prism.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>
